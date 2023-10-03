@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { IProduct } from './catalog/product.model';
+import { IProduct } from './product.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
   products: IProduct[];
-  constructor() {
+  constructor(private http: HttpClient ) {
     this.products = [
       {
         id: 1,
@@ -182,7 +184,10 @@ export class ProductsService {
         discount: 0,
       },
     ];
+  }
 
+  getProductsFrom():Observable<IProduct[]> {
+    return this.http.get<IProduct[]>('/api/products');
   }
 
   getProducts(filter:string){

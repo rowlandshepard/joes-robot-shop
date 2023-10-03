@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { IProduct } from './product.model';
+import { IProduct } from './product/product.model';
 import { CartService } from '../cart.service';
-import { ProductsService } from '../products.service';
+import { ProductsService } from './product/products.service';
 
 @Component({
   selector: 'joe-catalog',
